@@ -3,11 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Currency;
-use Illuminate\Console\View\Components\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CurrencyTableSeeder extends Seeder
+class CurrencySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +14,8 @@ class CurrencyTableSeeder extends Seeder
      */
     public function run()
     {
-        $factory(Currency::class, 10)->create();
+        Currency::factory()
+            ->count(5)
+            ->create();
     }
 }

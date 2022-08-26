@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Currency;
 use Illuminate\Support\Str;
+use App\Models\CountdownRate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CurrencyFactory extends Factory
+class CountdownRateFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Currency::class;
+    protected $model = CountdownRate::class;
 
     /**
      * Define the model's default state.
@@ -23,10 +23,7 @@ class CurrencyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'symbol' => $this->faker->currencyCode(),
-            'start_id' => \App\Models\Rates::factory(),
-            'end_id' => \App\Models\Rates::factory(),
+            'coutdown' => $this->faker->randomNumber(0),
         ];
     }
 }

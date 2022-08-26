@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->decimal('conversion_rate', 5, 5);
+            $table->decimal('conversion_rate', 12,0 );
             $table->unsignedBigInteger('countdown_rate_id');
 
             $table->timestamps();
