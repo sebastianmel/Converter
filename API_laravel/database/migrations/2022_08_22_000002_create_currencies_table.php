@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('symbol', 3);
-            $table->unsignedBigInteger('start_id');
-            $table->unsignedBigInteger('end_id');
+            $table->unsignedBigInteger('start_id')->nullable();
+            $table->unsignedBigInteger('end_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

@@ -23,7 +23,7 @@ class CurrencyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->country,
             'symbol' => $this->faker->currencyCode(),
             'start_id' => \App\Models\Rates::factory(),
             'end_id' => \App\Models\Rates::factory(),

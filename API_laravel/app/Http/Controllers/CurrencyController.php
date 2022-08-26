@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currency;
+use App\Models\Rates;
 use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
@@ -26,7 +27,16 @@ class CurrencyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Currency([
+            'name' => $request->input('name'),
+            'symbol' => $request->input('symbol'),
+            'start_id' => $request->input('start_id'),
+            'end_id' => $request->input('end_id')
+        ]);
+
+        $post->save();
+        return response()->json('The post successfully added');
+       
     }
 
     /**
@@ -35,9 +45,10 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function show(Currency $currency)
+    public function show(Request $request,$id)
     {
-        //
+        $post = Currency::find($id);
+        return response()->json($post);
     }
 
     /**
@@ -47,9 +58,11 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Currency $currency)
+    public function update(Request $request,$id)
     {
-        //
+        $post = Currency::find($id);
+        $post->update($request->all());
+        return response()->json('The post successfully updated');
     }
 
     /**
@@ -58,8 +71,10 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Currency $currency)
+    public function destroy($id)
     {
-        //
+        $post = Currency::find($id);
+        $post->delete();
+        return response()->json('The post successfully deleted');
     }
 }

@@ -20,6 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('Currency', [CurrencyController::class,'index']);
+Route::post('CurrencyPost', [CurrencyController::class,'store']);
+Route::get('Currency/{id}', [CurrencyController::class,'show']);
+Route::post('CurrencyUpdate/{id}', [CurrencyController::class,'update']);
+Route::delete('CurrencyDelete/{id}', [CurrencyController::class,'destroy']);
+
 
 
 // Route::get('/users', [CurrencyController::class, 'index']);
