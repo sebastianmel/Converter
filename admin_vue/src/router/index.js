@@ -15,8 +15,32 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/ListeView.vue')
-    }
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/addCurrency',
+      name: 'addCurrency',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/CurrencyView.vue')
+    },
+    {
+      path: '/addPair',
+      name: 'addCurrencyPair',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/CurrencyPairView.vue')
+    },
+    {
+      path: '/editCurrency',
+      name: 'editCurrency',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/EditCurrencyView.vue')
+    },
   ]
 })
 
