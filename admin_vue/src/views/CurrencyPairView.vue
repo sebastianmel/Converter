@@ -1,3 +1,33 @@
+<script>
+import axios from "axios"
+export default {
+  data() {
+    return {
+      currencies: [],
+      formData: {
+        from: document.getElementById("currency1."),
+        to:  document.getElementById("currency2"),
+        conversionRate: document.getElementById("conversionRate"),
+      }
+    }
+  },
+
+  mounted() {
+        // request for show all currencies the user can use for create a pair 
+    axios
+      .get('http://127.0.0.1:8000/api/Currency')
+      .then((response) => {
+        this.currencies = response.data
+      })
+  //  request for add new currency pair
+    axios
+      .post('http://127.0.0.1:8000/api/PairPost', this.formData)
+      .then((response) => console.log(response))
+  console.log(this.formData)
+  }
+
+}
+</script>
 <template>
 <div class="container">
   <main>
@@ -19,33 +49,33 @@
           <div class="row g-3">
            
 
-            <div class="col-md-5">
-              <label for="country" class="form-label">Currency 1</label>
-              <select class="form-select" id="country" required>
+            <div class="col-md-4">
+              <label for="currency1" class="form-label">Currency 1</label>
+              <select class="form-select" id="currency1" value=""  required >
                 <option value="">Choose...</option>
-                <option>United States</option>
+                <option v-for="currency in currencies" :key="currency.id">{{currency.symbol}}</option>
               </select>
               <div class="invalid-feedback">
-                Please select a valid country.
+                Please select a valid currency.
               </div>
             </div>
 
             <div class="col-md-4">
-              <label for="state" class="form-label">Currency 2</label>
-              <select class="form-select" id="state" required>
+              <label for="currency2" class="form-label">Currency 2</label>
+              <select class="form-select" id="currency2" required>
                 <option value="">Choose...</option>
-                <option>California</option>
+                <option v-for="currency in currencies" :key="currency.id">{{currency.symbol}}</option>
               </select>
               <div class="invalid-feedback">
-                Please provide a valid state.
+                Please provide a valid currency.
               </div>
             </div>
 
-            <div class="col-md-3">
-              <label for="zip" class="form-label">Rate</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
+            <div class="col-md-4">
+              <label for="rate" class="form-label">Rate</label>
+              <input type="text" class="form-control" id="conversionRate" placeholder="" required>
               <div class="invalid-feedback">
-                Zip code required.
+                rate code required.
               </div>
             </div>
           </div>

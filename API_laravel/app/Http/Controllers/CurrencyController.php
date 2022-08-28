@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currency;
-use App\Models\Pair;
-use App\Models\Rates;
 use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
@@ -14,6 +12,8 @@ class CurrencyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+                                            // Prepare file for have Json response 
     public function index()
     {
         $currencies = Currency::all();
@@ -26,13 +26,14 @@ class CurrencyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+                                         //  FUNCTION FOR CREATE NEW CURRENCY AND SAVE THIS IN DATABASE
     public function store(Request $request)
     {
         $post = new Currency([
             'name' => $request->input('name'),
-            'symbol' => $request->input('symbol'),
-            'start_id' => $request->input('start_id'),
-            'end_id' => $request->input('end_id')
+            'symbol' => $request->input('symbol')
+            
         ]);
 
         $post->save();
@@ -46,6 +47,7 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
+                                // FUNCTION FOR SHOW A SPECIFIC DATA
     public function show(Request $request,$id)
     {
         $post = Currency::find($id);
@@ -59,6 +61,7 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
+                                // FUNCTION FOR UPDATE DATA 
     public function update(Request $request,$id)
     {
         $post = Currency::find($id);
@@ -72,6 +75,7 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
+                            // FUNCTION FOR DELETE DATA
     public function destroy($id)
     {
         $post = Currency::find($id);

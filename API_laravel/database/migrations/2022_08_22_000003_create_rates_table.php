@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration {
     /**
-     * Run the migrations.
+     *  Run the migrations for create table 
      *
      * @return void
      */

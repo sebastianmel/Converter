@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// ROUTE API 
+// ROUTE API  WHO USE CONTROLLER FOR LAUNCH DATA TREATMENT (GET DELETE POST...)
 Route::get('Currency', [CurrencyController::class,'index']);
 Route::post('CurrencyPost', [CurrencyController::class,'store']);
 Route::get('Currency/{id}', [CurrencyController::class,'show']);

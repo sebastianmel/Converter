@@ -1,3 +1,37 @@
+<script>
+import axios from "axios"
+export default {
+  data() {
+    return {
+      currencies: [],
+      pairs:[]
+    }
+  },
+  mounted() {
+    // request for get and show all existing currencies and currencies pair on home page
+    axios
+      .get('http://127.0.0.1:8000/api/Currency')
+      .then((response) => {
+        this.currencies = response.data
+      })
+    axios
+      .get('http://127.0.0.1:8000/api/Pair')
+      .then((response) => {
+        this.pairs = response.data
+      })
+
+    delete{
+      mounted() {
+        axios
+          .delete('http://127.0.0.1:8000/api/CurrencyDelete/{id}')
+          .then((response) => console.log(response))
+      }
+    }
+    }
+
+}
+</script>
+
 <template>
 <div class="my-3 p-3 bg-body rounded shadow-sm">
 
@@ -17,22 +51,18 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">name</th>
-                        <th scope="col">symbol</th>
-                        <th scope="col">rate</th>
-                        <th scope="col">start id</th>
-                        <th scope="col">end Id</th>
+                        <th scope="col">symbol</th>                       
+                       
                         
                     </tr>
                 </thead>
                 <tbody>
        
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>EURO</td> 
-                        <td>EU</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>6</td>
+                    <tr v-for="currency in currencies" :key="currency.id">
+                        <th scope="row">{{currency.id}}</th>
+                        <td>{{currency.name}}</td> 
+                        <td>{{currency.symbol}}</td>
+                        
                         <td>
                             <a href="/editCurrency" class="btn btn-info">Edit</a>
                             <a href="#" class="btn btn-danger" onclick="">Delete</a>
@@ -45,24 +75,7 @@
                         </td>
                     </tr> 
 
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>DOLLAR</td> 
-                        <td>USD</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>6</td>
-                        <td>
-                            <a href="/editCurrency" class="btn btn-info">Edit</a>
-                            <a href="#" class="btn btn-danger" onclick="">Delete</a>
-
-                            <form id="" action="" method="post">
-                                
-                                <input type="hidden" name="_method" value="delete">
-                            </form>
-
-                        </td>
-                    </tr>
+                    
                     
 
                 </tbody>
@@ -82,20 +95,18 @@
                         <th scope="col">FROM</th>
                         <th scope="col">to</th>
                         <th scope="col">rate</th>
-                        <th scope="col">start id</th>
-                        <th scope="col">end Id</th>
+                        
                         
                     </tr>
                 </thead>
                 <tbody>
                     
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>EU</td> 
-                        <td>USD</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2</td>
+                    <tr v-for="pair in pairs" :key="pair.id">
+                        <th scope="row">{{pair.id}}</th>
+                        <td>{{pair.from}}</td> 
+                        <td>{{pair.to}}</td>
+                        <td>{{pair.conversionRate}}</td>
+                       
                         <td>
                            
                             <a href="#" class="btn btn-danger" onclick="">Delete</a>
