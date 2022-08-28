@@ -1,5 +1,5 @@
 <template>
-    <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div class="py-5 text-center">
         <h3 class="border-bottom pb-2 mb-4">Add currency : </h3>
 
         <div class='mt-4'>
@@ -19,10 +19,7 @@
                     <input type="text" class="form-control" name="alphanum" value="" required>
                 </div>
 
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">rate </label>
-                    <input type="number" class="form-control" name="price" value=""   required>
-                </div>
+                
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">pair (start/end)</label>
                     <input type="number" class="form-control" name="price" value="" placeholder="1"   required>
