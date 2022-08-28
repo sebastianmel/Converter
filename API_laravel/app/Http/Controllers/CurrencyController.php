@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currency;
+use App\Models\Pair;
 use App\Models\Rates;
 use Illuminate\Http\Request;
 

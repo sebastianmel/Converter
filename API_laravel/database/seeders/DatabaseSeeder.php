@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CountdownRateSeeder::class);
         $this->call(CurrencySeeder::class);
+        $this->call(PairSeeder::class);
         $this->call(RatesSeeder::class);
         $this->call(UserSeeder::class);
     }
