@@ -1,14 +1,11 @@
 <script>
 import axios from "axios"
+
 export default {
+
   data() {
     return {
-      currencies: [],
-      formData: {
-        from: document.getElementById("currency1."),
-        to:  document.getElementById("currency2"),
-        conversionRate: document.getElementById("conversionRate"),
-      }
+      currencies: []
     }
   },
 
@@ -24,7 +21,7 @@ export default {
       .post('http://127.0.0.1:8000/api/PairPost', this.formData)
       .then((response) => console.log(response))
   console.log(this.formData)
-  }
+  } 
 
 }
 </script>
@@ -51,7 +48,7 @@ export default {
 
             <div class="col-md-4">
               <label for="currency1" class="form-label">Currency 1</label>
-              <select class="form-select" id="currency1" value=""  required >
+              <select class="form-select" id="currency1"  required >
                 <option value="">Choose...</option>
                 <option v-for="currency in currencies" :key="currency.id">{{currency.symbol}}</option>
               </select>
@@ -62,7 +59,7 @@ export default {
 
             <div class="col-md-4">
               <label for="currency2" class="form-label">Currency 2</label>
-              <select class="form-select" id="currency2" required>
+              <select class="form-select" id="currency2"  required>
                 <option value="">Choose...</option>
                 <option v-for="currency in currencies" :key="currency.id">{{currency.symbol}}</option>
               </select>
@@ -73,7 +70,7 @@ export default {
 
             <div class="col-md-4">
               <label for="rate" class="form-label">Rate</label>
-              <input type="text" class="form-control" id="conversionRate" placeholder="" required>
+              <input type="text" class="form-control" id="conversionRate"  placeholder="" required>
               <div class="invalid-feedback">
                 rate code required.
               </div>
